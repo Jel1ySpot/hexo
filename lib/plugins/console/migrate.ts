@@ -1,6 +1,14 @@
 import { underline, magenta } from 'picocolors';
 import type Hexo from '../../hexo';
 
+/**
+ * `hexo migrate`
+ *
+ * Runs migrator plugins to import content from other platforms into the
+ * current Hexo site. Lists available migrators if the requested type is not
+ * installed.
+ */
+
 interface MigrateArgs {
   _: string[]
   [key: string]: any

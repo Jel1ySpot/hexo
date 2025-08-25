@@ -1,6 +1,13 @@
 import moize from 'moize';
 import type Hexo from '../../hexo';
 
+/**
+ * Registers built-in tag plugins for Markdown and templates.
+ *
+ * Tag plugins provide convenient syntax for embedding content such as images,
+ * blockquotes and code blocks. Each tag is implemented in its own module and
+ * may perform asynchronous work when rendering.
+ */
 export default (ctx: Hexo) => {
   const { tag } = ctx.extend;
 

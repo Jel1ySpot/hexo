@@ -3,6 +3,14 @@ import { underline, magenta } from 'picocolors';
 import type Hexo from '../../hexo';
 import type Promise from 'bluebird';
 
+/**
+ * `hexo deploy`
+ *
+ * Sends the generated site to a deployment target. If the public folder is
+ * missing, it automatically triggers a generation step before running
+ * registered deployer plugins.
+ */
+
 interface DeployArgs {
   _?: string[]
   g?: boolean

@@ -9,6 +9,13 @@ import { createSha1Hash } from 'hexo-util';
 import type Hexo from '../../hexo';
 import type Router from '../../hexo/router';
 
+/**
+ * `hexo generate`
+ *
+ * Converts source files into static assets. Supports incremental builds,
+ * cleaning of outdated files and optional deployment or file watching modes.
+ */
+
 interface GenerateArgs {
   f?: boolean
   force?: boolean

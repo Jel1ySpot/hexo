@@ -1,3 +1,10 @@
+/**
+ * Registers default renderers used to transform source files into other
+ * formats.
+ *
+ * Includes pass-through renderers for static files as well as specific ones
+ * for JSON, YAML and Nunjucks templates.
+ */
 import type Hexo from '../../hexo';
 
 export = (ctx: Hexo) => {

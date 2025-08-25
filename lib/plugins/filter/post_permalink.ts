@@ -3,6 +3,13 @@ import { basename } from 'path';
 import type Hexo from '../../hexo';
 import type { PostSchema } from '../../types';
 
+/**
+ * Generates the permalink for a post using the configured pattern.
+ *
+ * Falls back to default categories and handles asset folder conventions when
+ * the permalink does not end with a slash or extension.
+ */
+
 let permalink: Permalink;
 
 function postPermalinkFilter(this: Hexo, data: PostSchema): string {

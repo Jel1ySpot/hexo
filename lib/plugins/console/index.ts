@@ -1,3 +1,10 @@
+/**
+ * Registers Hexo's built-in console commands.
+ *
+ * Each command (e.g. `hexo clean`, `hexo generate`) is defined in its own
+ * module and plugged into the CLI here along with descriptions and options
+ * that describe its usage.
+ */
 import type Hexo from '../../hexo';
 
 export = function(ctx: Hexo) {

@@ -1,3 +1,10 @@
+/**
+ * Registers built-in filters that run at various points in Hexo's lifecycle.
+ *
+ * Filters are tiny plugins that transform data or hook into events such as
+ * rendering and exiting. Each filter is loaded from its own module and
+ * registered under an appropriate name.
+ */
 import type Hexo from '../../hexo';
 
 export = (ctx: Hexo) => {

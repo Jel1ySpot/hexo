@@ -6,6 +6,10 @@ import type { TagSchema } from '../../../types';
 import type Model from 'warehouse/dist/model';
 import type Document from 'warehouse/dist/document';
 
+/**
+ * Shows all tags, how many posts use each tag and the URL of their archives.
+ */
+
 function listTag(this: Hexo): void {
   const Tag: Model<TagSchema> = this.model('Tag');
 

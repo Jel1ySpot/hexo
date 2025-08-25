@@ -4,6 +4,14 @@ import { basename } from 'path';
 import Hexo from '../../hexo';
 import type Promise from 'bluebird';
 
+/**
+ * `hexo new`
+ *
+ * Creates a new post, page or other content type. Accepts optional layout,
+ * slug and path arguments and passes remaining flags directly to the post
+ * generator.
+ */
+
 const reservedKeys = {
   _: true,
   title: true,

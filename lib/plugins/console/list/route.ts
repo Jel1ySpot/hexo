@@ -1,6 +1,11 @@
 import archy from 'archy';
 import type Hexo from '../../../hexo';
 
+/**
+ * Prints all generated routes as a tree, showing the structure of the public
+ * URLs that will be generated.
+ */
+
 function listRoute(this: Hexo): void {
   const routes = this.route.list().sort();
   const tree = buildTree(routes);

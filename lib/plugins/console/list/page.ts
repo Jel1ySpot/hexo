@@ -6,6 +6,10 @@ import type { PageSchema } from '../../../types';
 import type Model from 'warehouse/dist/model';
 import type Document from 'warehouse/dist/document';
 
+/**
+ * Displays all static pages with their dates, titles and source paths.
+ */
+
 function listPage(this: Hexo): void {
   const Page: Model<PageSchema> = this.model('Page');
 

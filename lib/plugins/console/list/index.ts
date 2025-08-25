@@ -7,6 +7,14 @@ import category from './category';
 import type Hexo from '../../../hexo';
 import type Promise from 'bluebird';
 
+/**
+ * `hexo list <type>`
+ *
+ * Lists information about different Hexo entities such as posts, pages,
+ * routes, tags and categories. Each type has its own handler module that
+ * outputs formatted details to the console.
+ */
+
 interface ListArgs {
   _: string[]
 }
