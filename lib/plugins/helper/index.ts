@@ -1,3 +1,10 @@
+/**
+ * Registers utility helpers available in Hexo templates.
+ *
+ * Helpers provide reusable template logic such as date formatting, asset URLs
+ * and HTML tag generators. Each helper module exports one or more functions
+ * that are exposed through `ctx.extend.helper`.
+ */
 import type Hexo from '../../hexo';
 
 export = (ctx: Hexo) => {

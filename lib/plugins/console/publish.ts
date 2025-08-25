@@ -3,6 +3,14 @@ import { magenta } from 'picocolors';
 import type Hexo from '../../hexo';
 import type Promise from 'bluebird';
 
+/**
+ * `hexo publish`
+ *
+ * Moves a draft post to the posts folder, effectively publishing it. The
+ * command accepts a layout argument and can replace existing posts when the
+ * `--replace` flag is provided.
+ */
+
 interface PublishArgs {
   _: string[]
   r?: boolean

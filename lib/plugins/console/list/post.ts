@@ -6,6 +6,11 @@ import type { PostSchema } from '../../../types';
 import type Model from 'warehouse/dist/model';
 import type Document from 'warehouse/dist/document';
 
+/**
+ * Lists posts with metadata including publication status, path, categories and
+ * tags.
+ */
+
 function mapName(item: any): string {
   return item.name;
 }

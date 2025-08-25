@@ -6,6 +6,10 @@ import type { CategorySchema } from '../../../types';
 import type Model from 'warehouse/dist/model';
 import type Document from 'warehouse/dist/document';
 
+/**
+ * Lists all categories with their post counts in a tabular form.
+ */
+
 function listCategory(this: Hexo): void {
   const categories: Model<CategorySchema> = this.model('Category');
 

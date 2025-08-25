@@ -3,6 +3,14 @@ const { isMoment } = moment;
 import moize from 'moize';
 import type { LocalsType } from '../../types';
 
+/**
+ * Date and time helper functions used within templates.
+ *
+ * Provides wrappers around Moment.js for consistent locale and timezone
+ * handling as well as formatting utilities such as `date`, `time` and
+ * `moment`.
+ */
+
 const isDate = (value: moment.MomentInput | moment.Moment): boolean =>
   typeof value === 'object' && value instanceof Date && !isNaN(value.getTime());
 

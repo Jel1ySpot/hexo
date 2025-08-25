@@ -6,6 +6,14 @@ import { cyan, magenta } from 'picocolors';
 import type Hexo from '../../hexo';
 import type Promise from 'bluebird';
 
+/**
+ * `hexo render`
+ *
+ * Renders a file with Hexo's renderer plugins and optionally writes the result
+ * to a destination path. Useful for testing renderers outside of the full
+ * generation pipeline.
+ */
+
 interface RenderArgs {
   _: string[]
   o?: string

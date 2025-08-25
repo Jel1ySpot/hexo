@@ -4,6 +4,14 @@ import { extname } from 'path';
 import Promise from 'bluebird';
 import type Hexo from '../../hexo';
 
+/**
+ * `hexo config`
+ *
+ * Reads or writes values in the main `_config.yml`/`_config.json` file. Without
+ * arguments it prints the entire configuration; with a key it prints that
+ * value, and with both key and value it updates the configuration file.
+ */
+
 interface ConfigArgs {
   _: string[]
   [key: string]: any

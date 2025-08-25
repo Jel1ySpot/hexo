@@ -9,6 +9,14 @@ import type Hexo from '../../hexo';
 import type { Stats } from 'fs';
 import { PageSchema } from '../../types';
 
+/**
+ * Processor for files in the source directory.
+ *
+ * Decides whether a file should be rendered as a page or copied directly as an
+ * asset based on its extension and `skip_render` rules. Also updates existing
+ * records using front-matter metadata.
+ */
+
 export = (ctx: Hexo) => {
   return {
     pattern: new Pattern(path => {

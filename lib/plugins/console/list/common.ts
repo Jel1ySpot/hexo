@@ -1,5 +1,12 @@
 import strip from 'strip-ansi';
 
+/**
+ * Utility helpers shared by list subcommands.
+ *
+ * Currently provides a `stringLength` function that measures the visual length
+ * of console strings, accounting for ANSI colors and double-byte characters.
+ */
+
 export function stringLength(str: string): number {
   str = strip(str);
 

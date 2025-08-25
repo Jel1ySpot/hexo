@@ -2,6 +2,14 @@ import Promise from 'bluebird';
 import { exists, unlink, rmdir } from 'hexo-fs';
 import type Hexo from '../../hexo';
 
+/**
+ * `hexo clean`
+ *
+ * Removes generated files, cache database and public folder to give the site
+ * a fresh state. Executed before certain commands like `hexo generate` to
+ * ensure stale files are cleared.
+ */
+
 function cleanConsole(this: Hexo): Promise<[void, void, any]> {
   return Promise.all([
     deleteDatabase(this),
