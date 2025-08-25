@@ -27,7 +27,7 @@ export = (ctx: Hexo) => function partial(this: LocalsType, name: string, locals?
     Object.assign(viewLocals, this, locals);
   }
 
-  // Partial don't need layout
+  // 部分模板不需要布局
   viewLocals.layout = false;
 
   if (cache) {

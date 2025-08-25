@@ -7,10 +7,9 @@ import type Hexo from '../../hexo';
 import type { PostSchema } from '../../types';
 
 /**
- * Determines the file path for new posts or drafts.
+ * 确定新文章或草稿的文件路径。
  *
- * Uses the `new_post_name` template and optional slug/path values to build a
- * collision-free destination and creates directories when necessary.
+ * 使用 `new_post_name` 模板及可选的 slug/path 值来构建无冲突的目标路径，并在必要时创建目录。
  */
 
 let permalink: Permalink;

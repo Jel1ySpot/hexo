@@ -2,9 +2,9 @@ import { url_for, htmlTag } from 'hexo-util';
 import type Hexo from '../../hexo';
 
 /**
- * Url for tag
+ * url_for 标签
  *
- * Syntax:
+ * 语法：
  *   {% url_for text path [relative] %}
  */
 export = (ctx: Hexo) => {

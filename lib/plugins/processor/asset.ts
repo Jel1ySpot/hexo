@@ -10,11 +10,9 @@ import type { Stats } from 'fs';
 import { PageSchema } from '../../types';
 
 /**
- * Processor for files in the source directory.
+ * 处理源目录中文件的处理器。
  *
- * Decides whether a file should be rendered as a page or copied directly as an
- * asset based on its extension and `skip_render` rules. Also updates existing
- * records using front-matter metadata.
+ * 根据文件扩展名和 `skip_render` 规则决定是将文件渲染为页面还是直接作为资源复制，并使用 front-matter 元数据更新现有记录。
  */
 
 export = (ctx: Hexo) => {

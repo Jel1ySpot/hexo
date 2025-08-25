@@ -6,9 +6,9 @@ const rMetaDoubleQuote = /"?([^"]+)?"?/;
 const rMetaSingleQuote = /'?([^']+)?'?/;
 
 /**
-* Image tag
+* 图片标签
 *
-* Syntax:
+* 语法：
 *   {% img [class names] /path/to/image [width] [height] [title text [alt text]] %}
 */
 export = (ctx: Hexo) => {
@@ -17,7 +17,7 @@ export = (ctx: Hexo) => {
     const classes = [];
     let src, width, height, title, alt;
 
-    // Find image URL and class name
+    // 查找图片 URL 及类名
     while (args.length > 0) {
       const item = args.shift();
       if (rUrl.test(item) || item.startsWith('/')) {
@@ -28,7 +28,7 @@ export = (ctx: Hexo) => {
       }
     }
 
-    // Find image width and height
+    // 查找图片宽度与高度
     if (args && args.length) {
       if (!/\D+/.test(args[0])) {
         width = args.shift();
@@ -43,7 +43,7 @@ export = (ctx: Hexo) => {
       const rMetaAlt = meta.endsWith('"') ? rMetaDoubleQuote : rMetaSingleQuote;
       const match = new RegExp(`${rMetaTitle.source}\\s*${rMetaAlt.source}`).exec(meta);
 
-      // Find image title and alt
+      // 查找图片标题和 alt
       if (match != null) {
         title = match[1];
         alt = match[2];

@@ -32,7 +32,7 @@ function listPost(this: Hexo): void {
     ];
   });
 
-  // Table header
+  // 表头
   const header = ['Date', 'Title', 'Path', 'Category', 'Tags'].map(str => underline(str));
 
   data.unshift(header);

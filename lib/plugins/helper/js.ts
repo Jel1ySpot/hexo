@@ -16,7 +16,7 @@ function jsHelper(this: LocalsType, ...args: any[]) {
       }
       result += `<script src="${url_for.call(this, path)}"></script>\n`;
     } else {
-      // Custom attributes
+      // 自定义属性
       item.src = url_for.call(this, item.src);
       if (!item.src.endsWith('.js')) item.src += '.js';
       result += htmlTag('script', { ...item }, '') + '\n';

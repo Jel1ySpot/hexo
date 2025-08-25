@@ -1,9 +1,7 @@
 /**
- * Registers default renderers used to transform source files into other
- * formats.
+ * 注册用于将源文件转换为其他格式的默认渲染器。
  *
- * Includes pass-through renderers for static files as well as specific ones
- * for JSON, YAML and Nunjucks templates.
+ * 包括针对静态文件的透传渲染器以及专门用于 JSON、YAML 和 Nunjucks 模板的渲染器。
  */
 import type Hexo from '../../hexo';
 

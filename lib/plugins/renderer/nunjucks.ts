@@ -5,7 +5,7 @@ import type { StoreFunctionData } from '../../extend/renderer';
 
 function toArray(value) {
   if (Array.isArray(value)) {
-    // Return if given value is an Array
+    // 如果传入的值是数组则直接返回
     return value;
   } else if (typeof value.toArray === 'function') {
     return value.toArray();
@@ -61,7 +61,7 @@ function njkRenderer(data: StoreFunctionData, locals?: any): string {
 }
 
 njkRenderer.compile = (data: StoreFunctionData): (locals: any) => string => {
-  // Need a closure to keep the compiled template.
+  // 需要使用闭包以保留已编译的模板
   return locals => njkCompile(data).render(locals);
 };
 

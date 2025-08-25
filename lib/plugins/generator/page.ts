@@ -2,13 +2,12 @@ import type { BaseGeneratorReturn, PageSchema, SiteLocals } from '../../types';
 import type Document from 'warehouse/dist/document';
 
 /**
- * A simplified representation used when a page opts out of layouts and only
- * needs its raw content to be written to the target path.
+ * 当页面不使用布局时，仅需要将原始内容写入目标路径的简化表示。
  */
 type SimplePageGenerator = Omit<BaseGeneratorReturn, 'layout'> & { data: string };
 
 /**
- * Full representation for standard pages that use layouts.
+ * 使用布局的标准页面的完整表示。
  */
 interface NormalPageGenerator extends BaseGeneratorReturn {
   layout: string[];
@@ -18,17 +17,15 @@ interface NormalPageGenerator extends BaseGeneratorReturn {
 type PageGenerator = SimplePageGenerator | NormalPageGenerator;
 
 /**
- * Convert `locals.pages` into a set of generation instructions.
+ * 将 `locals.pages` 转换为生成指令集合。
  *
- * Each page is mapped to an object containing its destination path and either
- * raw content or a reference to the page model (for further processing with
- * layouts).
+ * 每个页面映射为一个对象，包含目标路径以及原始内容或页面模型，用于结合布局进行进一步处理。
  */
 function pageGenerator(locals: SiteLocals): PageGenerator[] {
   return locals.pages.map((page: Document<PageSchema> & PageSchema) => {
     const { path, layout } = page;
 
-    // When a page disables layouts, output the content directly.
+    // 当页面禁用布局时，直接输出内容
     if (!layout || layout === 'false' || layout === 'off') {
       return {
         path,
@@ -36,12 +33,11 @@ function pageGenerator(locals: SiteLocals): PageGenerator[] {
       };
     }
 
-    // Determine the layout search order. The explicit layout has highest
-    // priority followed by the defaults.
+    // 确定布局的查找顺序：显式指定的布局优先，其次是默认布局
     const layouts = ['page', 'post', 'index'];
     if (layout !== 'page') layouts.unshift(layout);
 
-    // Flag the page as processed so that downstream logic can identify it.
+    // 标记页面已处理，以便下游逻辑识别
     page.__page = true;
 
     return {

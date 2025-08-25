@@ -4,9 +4,7 @@ import type Hexo from '../../hexo';
 /**
  * `hexo migrate`
  *
- * Runs migrator plugins to import content from other platforms into the
- * current Hexo site. Lists available migrators if the requested type is not
- * installed.
+ * 运行迁移插件，将其他平台的内容导入当前 Hexo 站点。如果请求的类型未安装，则列出可用的迁移器。
  */
 
 interface MigrateArgs {
@@ -15,7 +13,7 @@ interface MigrateArgs {
 }
 
 function migrateConsole(this: Hexo, args: MigrateArgs): Promise<any> {
-  // Display help message if user didn't input any arguments
+  // 如果用户没有输入任何参数，则显示帮助信息
   if (!args._.length) {
     return this.call('help', {_: ['migrate']});
   }

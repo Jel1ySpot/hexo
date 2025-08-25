@@ -10,9 +10,7 @@ import type Promise from 'bluebird';
 /**
  * `hexo list <type>`
  *
- * Lists information about different Hexo entities such as posts, pages,
- * routes, tags and categories. Each type has its own handler module that
- * outputs formatted details to the console.
+ * 列出不同 Hexo 实体的信息，如文章、页面、路由、标签和分类。每种类型都有自己的处理模块，将格式化后的信息输出到控制台。
  */
 
 interface ListArgs {
@@ -28,7 +26,7 @@ const alias = abbrev(Object.keys(store));
 function listConsole(this: Hexo, args: ListArgs): Promise<void> {
   const type = args._.shift();
 
-  // Display help message if user didn't input any arguments
+  // 如果用户没有输入任何参数，则显示帮助信息
   if (!type || !alias[type]) {
     return this.call('help', {_: ['list']});
   }

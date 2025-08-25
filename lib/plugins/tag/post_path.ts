@@ -3,9 +3,9 @@ import { postFindOneFactory } from './';
 import type Hexo from '../../hexo';
 
 /**
- * Post path tag
+ * post_path 标签
  *
- * Syntax:
+ * 语法：
  *   {% post_path slug | title %}
  */
 export = (ctx: Hexo) => {

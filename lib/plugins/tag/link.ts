@@ -3,9 +3,9 @@ import { htmlTag } from 'hexo-util';
 const rUrl = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%/.\w-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[.!/\\w]*))?)/;
 
 /**
-* Link tag
+* 链接标签
 *
-* Syntax:
+* 语法：
 *   {% link text url [external] [title] %}
 */
 
@@ -17,7 +17,7 @@ function linkTag(args: string[]) {
   let i = 0;
   const len = args.length;
 
-  // Find link URL and text
+  // 查找链接的 URL 和文本
   for (; i < len; i++) {
     const item = args[i];
 
@@ -29,11 +29,11 @@ function linkTag(args: string[]) {
     }
   }
 
-  // Delete link URL and text from arguments
+  // 从参数中移除链接 URL 和文本
   args = args.slice(i + 1);
 
-  // Check if the link should be open in a new window
-  // and collect the last text as the link title
+  // 检查链接是否应在新窗口中打开
+  // 并将最后的文本作为链接标题
   if (args.length) {
     const shift = args[0];
 

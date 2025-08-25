@@ -15,7 +15,7 @@ function listCategory(this: Hexo): void {
 
   const data = categories.sort({name: 1}).map((cate: Document<CategorySchema> & CategorySchema) => [cate.name, String(cate.length)]);
 
-  // Table header
+  // 表头
   const header = ['Name', 'Posts'].map(str => underline(str));
 
   data.unshift(header);

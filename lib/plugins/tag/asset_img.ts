@@ -3,9 +3,9 @@ import { encodeURL } from 'hexo-util';
 import type Hexo from '../../hexo';
 
 /**
- * Asset image tag
+ * 资源图片标签
  *
- * Syntax:
+ * 语法：
  *   {% asset_img [class names] slug [width] [height] [title text [alt text]]%}
  */
 export = (ctx: Hexo) => {
@@ -14,11 +14,11 @@ export = (ctx: Hexo) => {
   return function assetImgTag(args: string[]) {
     const len = args.length;
 
-    // Find image URL
+    // 查找图片 URL
     for (let i = 0; i < len; i++) {
       const asset = PostAsset.findOne({post: this._id, slug: args[i]});
       if (asset) {
-        // img tag will call url_for so no need to call it here
+        // img 标签内部会调用 url_for，因此这里无需再次调用
         args[i] = encodeURL(new URL(asset.path, ctx.config.url).pathname);
         return img(ctx)(args);
       }

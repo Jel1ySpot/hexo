@@ -57,10 +57,10 @@ function listTagsHelper(this: LocalsType, tags?: Query<TagSchema> | Options, opt
   const order = options.order || 1;
   let result = '';
 
-  // Sort the tags
+  // 排序标签
   tags = tags.sort(orderby, order);
 
-  // Limit the number of tags
+  // 限制标签数量
   if (options.amount) tags = tags.limit(options.amount);
 
   if (style === 'list') {

@@ -93,8 +93,8 @@ function openGraphHelper(this: LocalsType, options: Options = {}) {
 
   if (description) {
     description = escapeHTML(stripHTML(description).substring(0, 200)
-      .trim() // Remove prefixing/trailing spaces
-    ).replace(/\n/g, ' '); // Replace new lines by spaces
+      .trim() // 去除首尾空格
+    ).replace(/\n/g, ' '); // 将换行符替换为空格
   }
 
   if (!images.length && content) {

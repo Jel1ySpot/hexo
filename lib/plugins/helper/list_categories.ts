@@ -67,7 +67,7 @@ function listCategoriesHelper(this: LocalsType, categories?: Query<CategorySchem
           }
         }
 
-        // special case: category page
+        // 特殊情况：分类页面
         isCurrent = isCurrent || (this.page.base && this.page.base.startsWith(cat.path));
       }
 

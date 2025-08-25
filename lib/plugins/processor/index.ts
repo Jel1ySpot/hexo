@@ -1,9 +1,7 @@
 /**
- * Registers processors that handle source files before generation.
+ * 注册在生成之前处理源文件的处理器。
  *
- * Processors parse specific file types (assets, data files, posts) and convert
- * them into internal models or routes. Each processor exports a pattern and
- * process function which are wired up here.
+ * 处理器解析特定类型的文件（资源、数据文件、文章）并将其转换为内部模型或路由。每个处理器导出一个模式和处理函数，并在此处注册。
  */
 import type Hexo from '../../hexo';
 

@@ -46,10 +46,10 @@ export = (ctx: Hexo) => {
 
       if (!result || isHiddenFile(result.path)) return;
 
-      // checks only if there is a renderer for the file type or if is included in skip_render
+      // 仅在存在渲染器或包含于 skip_render 时才检查
       result.renderable = ctx.render.isRenderable(path) && !isMatch(path, ctx.config.skip_render);
 
-      // if post_asset_folder is set, restrict renderable files to default file extension
+      // 如果启用了 post_asset_folder，则仅允许默认扩展名的文件渲染
       if (result.renderable && ctx.config.post_asset_folder) {
         result.renderable = (extname(ctx.config.new_post_name) === extname(path));
       }
@@ -111,7 +111,7 @@ function processPost(ctx: Hexo, file: _File) {
       if (!preservedKeys[key]) data[key] = info[key];
     }
 
-    // use `slug` as `title` of post when `title` is not specified.
+    // 当未指定 `title` 时使用 `slug` 作为文章标题
     // https://github.com/hexojs/hexo/issues/5372
     if (use_slug_as_post_title && !('title' in data)) {
       // @ts-expect-error - title is not in data
@@ -261,16 +261,16 @@ function scanAssetDir(ctx: Hexo, post: PostSchema) {
 function shouldSkipAsset(ctx: Hexo, post: PostSchema, asset: Document<PostAssetSchema>) {
   if (!ctx._showDrafts()) {
     if (post.published === false && asset) {
-      // delete existing draft assets if draft posts are hidden
+      // 如果隐藏草稿文章，则删除已存在的草稿资源
       asset.remove();
     }
     if (post.published === false) {
-      // skip draft assets if draft posts are hidden
+      // 如果隐藏草稿文章，则跳过草稿资源
       return true;
     }
   }
 
-  return asset !== undefined; // skip already existing assets
+  return asset !== undefined; // 跳过已存在的资源
 }
 
 function processAsset(ctx: Hexo, file: _File) {
@@ -297,7 +297,7 @@ function processAsset(ctx: Hexo, file: _File) {
   };
 
   if (postAsset) {
-    // `postAsset.post` is `Post.id`.
+    // `postAsset.post` 即 `Post.id`
     const post = Post.findById(postAsset.post);
     if (post != null && (post.published || ctx._showDrafts())) {
       return savePostAsset(post);
@@ -310,7 +310,7 @@ function processAsset(ctx: Hexo, file: _File) {
     return savePostAsset(post);
   }
 
-  // NOTE: Probably, unreachable.
+  // 注意：此处可能无法到达
   if (postAsset) {
     return postAsset.remove();
   }

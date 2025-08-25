@@ -5,9 +5,7 @@ import type Hexo from '../../hexo';
 /**
  * `hexo clean`
  *
- * Removes generated files, cache database and public folder to give the site
- * a fresh state. Executed before certain commands like `hexo generate` to
- * ensure stale files are cleared.
+ * 移除生成的文件、缓存数据库和 public 目录，使站点恢复到干净状态。在执行 `hexo generate` 等命令前运行，以确保清除过期文件。
  */
 
 function cleanConsole(this: Hexo): Promise<[void, void, any]> {

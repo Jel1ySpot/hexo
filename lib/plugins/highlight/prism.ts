@@ -1,7 +1,7 @@
 import type { HighlightOptions } from '../../extend/syntax_highlight';
 import type Hexo from '../../hexo';
 
-// Lazy require prismjs
+// 延迟加载 prismjs
 let prismHighlight: typeof import('hexo-util').prismHighlight;
 
 module.exports = function(this: Hexo, code: string, options: HighlightOptions) {
@@ -25,7 +25,7 @@ module.exports = function(this: Hexo, code: string, options: HighlightOptions) {
   if (!prismHighlight) prismHighlight = require('hexo-util').prismHighlight;
 
   if (Array.isArray(prismjsCfg.exclude_languages) && prismjsCfg.exclude_languages.includes(prismjsOptions.lang)) {
-    // Only wrap with <pre><code class="lang"></code></pre>
+    // 仅包裹 <pre><code class="lang"></code></pre>
     return `<pre><code class="${prismjsOptions.lang}">${require('hexo-util').escapeHTML(code)}</code></pre>`;
   }
   return prismHighlight(code, prismjsOptions);
