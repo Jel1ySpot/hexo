@@ -3,9 +3,9 @@ import { postFindOneFactory } from './';
 import type Hexo from '../../hexo';
 
 /**
- * Post link tag
+ * post_link 标签
  *
- * Syntax:
+ * 语法：
  *   {% post_link slug | title [title] [escape] %}
  */
 export = (ctx: Hexo) => {
@@ -37,7 +37,7 @@ export = (ctx: Hexo) => {
     }
 
     let title = args.length ? args.join(' ') : post.title || post.slug;
-    // Let attribute be the true post title so it appears in tooltip.
+    // 将真正的文章标题作为属性值，以便在提示中显示
     const attrTitle = escapeHTML(post.title || post.slug);
     if (escape === 'true') title = escapeHTML(title);
 

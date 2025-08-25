@@ -4,10 +4,9 @@ import type Hexo from '../../hexo';
 import type { PostSchema } from '../../types';
 
 /**
- * Generates the permalink for a post using the configured pattern.
+ * 使用配置的模式为文章生成永久链接。
  *
- * Falls back to default categories and handles asset folder conventions when
- * the permalink does not end with a slash or extension.
+ * 当永久链接不以斜杠或扩展名结尾时，会回退到默认分类并处理资源文件夹约定。
  */
 
 let permalink: Permalink;
@@ -62,8 +61,7 @@ function postPermalinkFilter(this: Hexo, data: PostSchema): string {
   for (const key of keys) {
     if (Object.prototype.hasOwnProperty.call(meta, key)) continue;
 
-    // Use Object.getOwnPropertyDescriptor to copy getters to avoid "Maximum call
-    // stack size exceeded" error
+    // 使用 Object.getOwnPropertyDescriptor 复制 getter，以避免出现 "Maximum call stack size exceeded" 错误
     Object.defineProperty(meta, key, Object.getOwnPropertyDescriptor(data, key));
   }
 

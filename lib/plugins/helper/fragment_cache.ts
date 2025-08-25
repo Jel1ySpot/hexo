@@ -4,7 +4,7 @@ import type Hexo from '../../hexo';
 export = (ctx: Hexo) => {
   const cache = new Cache();
 
-  // reset cache for watch mode
+  // 在监听模式下重置缓存
   ctx.on('generateBefore', () => { cache.flush(); });
 
   return function fragmentCache(id: string, fn: () => any) {

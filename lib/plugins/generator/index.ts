@@ -1,19 +1,17 @@
 import type Hexo from '../../hexo';
 
 /**
- * Attach built-in generators to the provided Hexo instance.
+ * 将内置的生成器附加到提供的 Hexo 实例。
  *
- * Generators transform source models into routable files during the render
- * phase. Each registration maps a name to the corresponding generator
- * implementation.
+ * 生成器在渲染阶段将源模型转换为可路由文件。每个注册条目都映射到相应的生成器实现。
  */
 export = (ctx: Hexo) => {
   const { generator } = ctx.extend;
 
-  // Generate static asset files such as images or other resources.
+  // 生成静态资源文件，如图片或其他资源
   generator.register('asset', require('./asset'));
-  // Generate regular pages (about, contact, etc.).
+  // 生成常规页面（about、contact 等）
   generator.register('page', require('./page'));
-  // Generate blog posts.
+  // 生成博客文章
   generator.register('post', require('./post'));
 };

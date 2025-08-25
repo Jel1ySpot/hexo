@@ -56,10 +56,10 @@ class Generator {
     const publicDir = this.context.public_dir;
     const { generatingFiles } = this;
     const { route } = this.context;
-    // Skip if the file is generating
+    // 如果文件正在生成则跳过
     if (generatingFiles.has(path)) return Promise.resolve();
 
-    // Lock the file
+    // 锁定文件
     generatingFiles.add(path);
 
     let promise: Promise<boolean>;
@@ -75,7 +75,7 @@ class Generator {
     }
 
     return promise.finally(() => {
-      // Unlock the file
+      // 解锁文件
       generatingFiles.delete(path);
     });
   }
@@ -92,7 +92,7 @@ class Generator {
       dataStream.once('end', resolve);
     });
 
-    // Get data => Cache data => Calculate hash
+    // 获取数据 => 缓存数据 => 计算哈希
     dataStream.on('data', chunk => {
       buffers.push(chunk);
       hasher.update(chunk);
@@ -104,16 +104,16 @@ class Generator {
       const cache = Cache.findById(cacheId);
       const hash = hasher.digest('hex');
 
-      // Skip generating if hash is unchanged
+      // 如果哈希未变化则跳过生成
       if (!force && cache && cache.hash === hash) {
         return;
       }
 
-      // Save new hash to cache
+      // 将新哈希保存到缓存中
       return Cache.save({
         _id: cacheId,
         hash
-      }).then(() => // Write cache data to public folder
+      }).then(() => // 将缓存数据写入 public 目录
         writeFile(dest, Buffer.concat(buffers))).then(() => {
         log.info('Generated: %s', magenta(path));
         return true;
@@ -128,19 +128,19 @@ class Generator {
     return unlink(dest).then(() => {
       log.info('Deleted: %s', magenta(path));
     }, err => {
-      // Skip ENOENT errors (file was deleted)
+      // 跳过 ENOENT 错误（文件已被删除）
       if (err && err.code === 'ENOENT') return;
       throw err;
     });
   }
   wrapDataStream(dataStream: ReturnType<Router['get']>): Readable {
     const { log } = this.context;
-    // Pass original stream with all data and errors
+    // 传递包含所有数据和错误的原始流
     if (this.bail) {
       return dataStream;
     }
 
-    // Pass all data, but don't populate errors
+    // 传递所有数据，但不抛出错误
     dataStream.on('error', err => {
       log.error(err);
     });
@@ -153,21 +153,21 @@ class Generator {
     const publicDir = this.context.public_dir;
     const Cache = this.context.model('Cache');
 
-    // Show the loading time
+    // 显示加载时间
     const interval = prettyHrtime(process.hrtime(this.start));
     log.info('Files loaded in %s', cyan(interval));
 
-    // Reset the timer for later usage
+    // 重置计时器以备后续使用
     this.start = process.hrtime();
 
 
-    // Check the public folder
+    // 检查 public 文件夹
     return stat(publicDir).then(stats => {
       if (!stats.isDirectory()) {
         throw new Error(`${magenta(tildify(publicDir))} is not a directory`);
       }
     }).catch(err => {
-      // Create public folder if not exists
+      // 如果不存在则创建 public 文件夹
       if (err && err.code === 'ENOENT') {
         return mkdirs(publicDir);
       }
@@ -179,9 +179,9 @@ class Generator {
       const routeList = route.list();
       const publicFiles = Cache.filter(item => item._id.startsWith('public/')).map(item => item._id.substring(7));
       const tasks = publicFiles.filter(path => !routeList.includes(path))
-        // Clean files
+        // 清理文件
         .map(path => task(this.deleteFile, path))
-        // Generate files
+        // 生成文件
         .concat(routeList.map(path => task(this.generateFile, path)));
 
       return Promise.all(Promise.map(tasks, doTask, { concurrency: parseFloat(concurrency || 'Infinity') }));
@@ -197,7 +197,7 @@ class Generator {
     return this.context.watch().then(() => this.firstGenerate()).then(() => {
       log.info('Hexo is watching for file changes. Press Ctrl+C to exit.');
 
-      // Watch changes of the route
+      // 监听路由变化
       route.on('update', path => {
         const modified = route.isModified(path);
         if (!modified) return;

@@ -6,9 +6,7 @@ import type Promise from 'bluebird';
 /**
  * `hexo deploy`
  *
- * Sends the generated site to a deployment target. If the public folder is
- * missing, it automatically triggers a generation step before running
- * registered deployer plugins.
+ * 将生成的站点发送至部署目标。如果缺少 public 文件夹，则会在运行注册的部署插件之前自动触发生成步骤。
  */
 
 interface DeployArgs {

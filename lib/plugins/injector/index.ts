@@ -1,9 +1,7 @@
 /**
- * Placeholder for future injector plugins.
+ * 未来注入器插件的占位符。
  *
- * The injector extension allows themes and plugins to append snippets into
- * various sections of the generated pages. Hexo currently ships without any
- * built-in injectors but sets up the extension point for external modules.
+ * 注入器扩展允许主题和插件向生成页面的各个部分追加片段。Hexo 目前没有内置注入器，但为外部模块预留了扩展点。
  */
 import type Hexo from '../../hexo';
 

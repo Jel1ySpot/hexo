@@ -2,9 +2,9 @@ import { url_for } from 'hexo-util';
 import type Hexo from '../../hexo';
 
 /**
- * Asset path tag
+ * 资源路径标签
  *
- * Syntax:
+ * 语法：
  *   {% asset_path slug %}
  */
 export = (ctx: Hexo) => {

@@ -24,7 +24,7 @@ interface RenderArgs {
 }
 
 function renderConsole(this: Hexo, args: RenderArgs): Promise<void> {
-  // Display help message if user didn't input any arguments
+  // 如果用户没有输入任何参数，则显示帮助信息
   if (!args._.length) {
     return this.call('help', {_: 'render'});
   }

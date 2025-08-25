@@ -2,11 +2,9 @@ import moize from 'moize';
 import type Hexo from '../../hexo';
 
 /**
- * Registers built-in tag plugins for Markdown and templates.
+ * 注册用于 Markdown 和模板的内置标签插件。
  *
- * Tag plugins provide convenient syntax for embedding content such as images,
- * blockquotes and code blocks. Each tag is implemented in its own module and
- * may perform asynchronous work when rendering.
+ * 标签插件提供便捷语法以嵌入图片、引用、代码块等内容。每个标签在其模块中实现，渲染时可能执行异步操作。
  */
 export default (ctx: Hexo) => {
   const { tag } = ctx.extend;
@@ -56,7 +54,7 @@ export default (ctx: Hexo) => {
   tag.register('full_url_for', require('./full_url_for')(ctx));
 };
 
-// Use WeakMap to track different ctx (in case there is any)
+// 使用 WeakMap 跟踪不同的 ctx（如有）
 const moized = new WeakMap();
 
 export function postFindOneFactory(ctx: Hexo) {

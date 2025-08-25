@@ -19,7 +19,7 @@ function i18nLocalsFilter(this: Hexo, locals: LocalsType): void {
       lang = data.lang;
       page.canonical_path = data.path;
     } else {
-      // i18n.languages is always an array with at least one argument ('default')
+      // i18n.languages 始终是至少包含一个参数（'default'）的数组
       lang = i18nConfigLanguages[0];
     }
   }

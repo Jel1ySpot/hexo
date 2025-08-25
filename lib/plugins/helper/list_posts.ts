@@ -28,10 +28,10 @@ function listPostsHelper(this: LocalsType, posts?: Query<PostSchema> | Options, 
   const className = options.class || 'post';
   const amount = options.amount || 6;
 
-  // Sort the posts
+  // 排序文章
   posts = posts.sort(orderby, order);
 
-  // Limit the number of posts
+  // 限制文章数量
   if (amount) posts = posts.limit(amount);
 
   let result = '';

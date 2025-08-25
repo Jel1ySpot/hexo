@@ -51,7 +51,7 @@ function listArchivesHelper(this: LocalsType, options: Options = {}) {
   let length = 0;
 
   posts.forEach(post => {
-    // Clone the date object to avoid pollution
+    // 克隆日期对象以避免污染
     let date = post.date.clone();
 
     if (timezone) date = date.tz(timezone);

@@ -1,9 +1,7 @@
 /**
- * Registers built-in filters that run at various points in Hexo's lifecycle.
+ * 注册在 Hexo 生命周期各阶段运行的内置过滤器。
  *
- * Filters are tiny plugins that transform data or hook into events such as
- * rendering and exiting. Each filter is loaded from its own module and
- * registered under an appropriate name.
+ * 过滤器是微型插件，可用于转换数据或挂钩到渲染、退出等事件。每个过滤器从其模块加载，并以适当的名称注册。
  */
 import type Hexo from '../../hexo';
 

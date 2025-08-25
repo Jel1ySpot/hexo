@@ -1,9 +1,8 @@
 /**
- * Registers utility helpers available in Hexo templates.
+ * 注册 Hexo 模板中可用的实用辅助函数。
  *
- * Helpers provide reusable template logic such as date formatting, asset URLs
- * and HTML tag generators. Each helper module exports one or more functions
- * that are exposed through `ctx.extend.helper`.
+ * 这些辅助函数提供诸如日期格式化、资源 URL、HTML 标签生成器等可复用的模板逻辑。
+ * 每个辅助模块导出一个或多个函数，通过 `ctx.extend.helper` 暴露。
  */
 import type Hexo from '../../hexo';
 

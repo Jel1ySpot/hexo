@@ -18,7 +18,7 @@ function listPage(this: Hexo): void {
     return [gray(date), page.title, magenta(page.source)];
   });
 
-  // Table header
+  // 表头
   const header = ['Date', 'Title', 'Path'].map(str => underline(str));
 
   data.unshift(header);

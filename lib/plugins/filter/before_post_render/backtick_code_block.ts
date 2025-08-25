@@ -48,7 +48,7 @@ function parseArgs(args: string) {
             let a = +cur.slice(0, hyphen);
             let b = +cur.slice(hyphen + 1);
             if (Number.isNaN(a) || Number.isNaN(b)) continue;
-            if (b < a) { // switch a & b
+            if (b < a) { // 交换 a 与 b
               [a, b] = [b, a];
             }
 
@@ -89,14 +89,14 @@ export = (ctx: Hexo): (data: RenderData) => void => {
     data.content = dataContent.replace(rBacktick, ($0, start, $2, _args, _content, end) => {
       let content = _content.replace(/\n$/, '');
 
-      // neither highlight or prismjs is enabled, return escaped content directly.
+      // 如果既未启用 highlight 也未启用 prismjs，则直接返回转义后的内容
       if (!ctx.extend.highlight.query(ctx.config.syntax_highlighter)) return escapeSwigTag($0);
 
       const parsedArgs = parseArgs(_args);
       if (!parsedArgs.enableHighlight) return escapeSwigTag($0);
       _args = parsedArgs._args;
 
-      // Extract language and caption of code blocks
+      // 提取代码块的语言与标题
       const args = _args.split('=').shift();
       let lang: string, caption: string;
 
@@ -118,7 +118,7 @@ export = (ctx: Hexo): (data: RenderData) => void => {
 
       // PR #3765
       if (start.includes('>')) {
-        // heading of last line is already removed by the top RegExp "rBacktick"
+        // 最后一行的开头已被顶部的正则 "rBacktick" 移除
         const depth = start.split('>').length - 1;
         const regexp = new RegExp(`^([^\\S\\r\\n]*>){0,${depth}}([^\\S\\r\\n]|$)`, 'mg');
         content = content.replace(regexp, '');
@@ -130,10 +130,10 @@ export = (ctx: Hexo): (data: RenderData) => void => {
         lines_length: content.split('\n').length,
         ...parsedArgs.options
       };
-      // setup line number by inline
+      // 通过内联参数设置行号
       _args = _args.replace('=+', '=');
 
-      // setup firstLineNumber;
+      // 设置起始行号
       if (_args.includes('=')) {
         options.firstLineNumber = _args.split('=')[1] || 1;
       }

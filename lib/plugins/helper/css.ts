@@ -16,7 +16,7 @@ function cssHelper(this: LocalsType, ...args: any[]) {
       }
       result += `<link rel="stylesheet" href="${url_for.call(this, path)}">\n`;
     } else {
-      // Custom attributes
+      // 自定义属性
       item.href = url_for.call(this, item.href);
       if (!item.href.endsWith('.css')) item.href += '.css';
       result += htmlTag('link', { rel: 'stylesheet', ...item }) + '\n';

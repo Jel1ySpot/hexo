@@ -22,7 +22,7 @@ const reservedKeys = {
   p: true,
   replace: true,
   r: true,
-  // Global options
+  // 全局选项
   config: true,
   debug: true,
   safe: true,
@@ -46,10 +46,10 @@ function newConsole(this: Hexo, args: NewArgs): Promise<void> {
   if (args._.length) {
     title = args._.pop();
   } else if (path) {
-    // Default title
+    // 默认标题
     title = basename(path);
   } else {
-    // Display help message if user didn't input any arguments
+    // 如果用户没有输入任何参数，则显示帮助信息
     return this.call('help', { _: ['new'] });
   }
 

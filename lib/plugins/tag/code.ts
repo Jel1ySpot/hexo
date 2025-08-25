@@ -1,4 +1,4 @@
-// Based on: https://raw.github.com/imathis/octopress/master/plugins/code_block.rb
+// 基于：https://raw.github.com/imathis/octopress/master/plugins/code_block.rb
 
 import { escapeHTML } from 'hexo-util';
 import type Hexo from '../../hexo';
@@ -9,22 +9,22 @@ const rCaptionUrl = /(\S[\S\s]*)\s+(https?:\/\/\S+)/i;
 const rCaption = /\S[\S\s]*/;
 
 /**
- * Code block tag
- * Syntax:
+ * 代码块标签
+ * 语法：
  * {% codeblock [options] %}
- * code snippet
+ * 代码片段
  * {% endcodeblock %}
- * @param {String} title Caption text
- * @param {Object} lang Specify language
- * @param {String} url Source link
- * @param {String} link_text Text of the link
- * @param {Object} line_number Show line number, value must be a boolean
- * @param {Object} highlight Enable code highlighting, value must be a boolean
- * @param {Object} first_line Specify the first line number, value must be a number
- * @param {Object} mark Line highlight specific line(s), each value separated by a comma. Specify number range using a dash
- * Example: `mark:1,4-7,10` will mark line 1, 4 to 7 and 10.
- * @param {Object} wrap Wrap the code block in <table>, value must be a boolean
- * @returns {String} Code snippet with code highlighting
+ * @param {String} title 说明文字
+ * @param {Object} lang 指定语言
+ * @param {String} url 源链接
+ * @param {String} link_text 链接文字
+ * @param {Object} line_number 显示行号，值必须为布尔值
+ * @param {Object} highlight 启用代码高亮，值必须为布尔值
+ * @param {Object} first_line 指定首行行号，值必须为数字
+ * @param {Object} mark 高亮指定行，多个值用逗号分隔，可用连字符指定范围
+ * 示例：`mark:1,4-7,10` 将高亮第 1 行、第 4 至 7 行以及第 10 行。
+ * @param {Object} wrap 使用 <table> 包裹代码块，值必须为布尔值
+ * @returns {String} 带有代码高亮的代码片段
 */
 
 function parseArgs(args: string[]): HighlightOptions {
@@ -68,7 +68,7 @@ function parseArgs(args: string[]): HighlightOptions {
             let a = +cur.slice(0, hyphen);
             let b = +cur.slice(hyphen + 1);
             if (Number.isNaN(a) || Number.isNaN(b)) continue;
-            if (b < a) { // switch a & b
+            if (b < a) { // 交换 a 与 b
               [a, b] = [b, a];
             }
 
@@ -116,7 +116,7 @@ function parseArgs(args: string[]): HighlightOptions {
 
 export = (ctx: Hexo) => function codeTag(args: string[], content: string) {
 
-  // If neither highlight.js nor prism.js is enabled, return escaped code directly
+  // 如果既未启用 highlight.js 也未启用 prism.js，则直接返回转义后的代码
   if (!ctx.extend.highlight.query(ctx.config.syntax_highlighter)) {
     return `<pre><code>${escapeHTML(content)}</code></pre>`;
   }
@@ -131,7 +131,7 @@ export = (ctx: Hexo) => function codeTag(args: string[], content: string) {
     args.splice(index, 1);
   }
 
-  // If 'highlight: false' is given, return escaped code directly
+  // 如果设置了 'highlight: false'，则直接返回转义后的代码
   if (!enableHighlight) {
     return `<pre><code>${escapeHTML(content)}</code></pre>`;
   }

@@ -1,9 +1,9 @@
 import { htmlTag } from 'hexo-util';
 
 /**
-* Iframe tag
+* iframe 标签
 *
-* Syntax:
+* 语法：
 *   {% iframe url [width] [height] %}
 */
 

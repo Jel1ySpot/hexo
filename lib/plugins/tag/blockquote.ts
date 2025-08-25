@@ -1,4 +1,4 @@
-// Based on: https://raw.github.com/imathis/octopress/master/plugins/blockquote.rb
+// 基于：https://raw.github.com/imathis/octopress/master/plugins/blockquote.rb
 
 import titlecase from 'titlecase';
 import type Hexo from '../../hexo';
@@ -48,11 +48,11 @@ const parseFooter = (args: string[], ctx: Hexo) => {
 };
 
 /**
-* Blockquote tag
+* 引用块标签
 *
-* Syntax:
+* 语法：
 *   {% blockquote [author[, source]] [link] [source_link_title] %}
-*   Quote string
+*   引用内容
 *   {% endblockquote %}
 */
 

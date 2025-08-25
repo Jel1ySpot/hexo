@@ -54,14 +54,14 @@ function tagcloudHelper(this: LocalsType, tags?: Query<TagSchema> | Options, opt
     endColor = new Color(options.end_color);
   }
 
-  // Sort the tags
+  // 排序标签
   if (orderby === 'random' || orderby === 'rand') {
     tags = tags.random();
   } else {
     tags = tags.sort(orderby, order);
   }
 
-  // Limit the number of tags
+  // 限制标签数量
   if (options.amount) {
     tags = tags.limit(options.amount);
   }

@@ -2,9 +2,9 @@ import { url_for, escapeHTML } from 'hexo-util';
 import type Hexo from '../../hexo';
 
 /**
- * Asset link tag
+ * 资源链接标签
  *
- * Syntax:
+ * 语法：
  *   {% asset_link slug [title] [escape] %}
  */
 export = (ctx: Hexo) => {

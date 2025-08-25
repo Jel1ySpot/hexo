@@ -7,11 +7,9 @@ import type { AssetSchema, BaseGeneratorReturn } from '../../types';
 import type Document from 'warehouse/dist/document';
 
 /**
- * Structured data returned for each processed asset.
+ * 每个已处理资源返回的结构化数据。
  *
- * `modified` indicates whether the source file has changed and therefore
- * needs to be re-rendered. `data` is an optional function that returns the
- * content of the asset, either a rendered string or a readable stream.
+ * `modified` 表示源文件是否发生变化，从而需要重新渲染；`data` 是可选函数，用于返回资源内容，可以是渲染后的字符串或可读流。
  */
 interface AssetData {
   modified: boolean;
@@ -19,10 +17,9 @@ interface AssetData {
 }
 
 /**
- * Shape of the objects returned by the asset generator.
+ * 资源生成器返回对象的结构。
  *
- * The `data` property contains runtime metadata about the asset as well as a
- * function to retrieve the asset content during generation.
+ * `data` 属性包含资源的运行时元数据以及在生成过程中获取内容的函数。
  */
 interface AssetGenerator extends BaseGeneratorReturn {
   data: {
@@ -32,14 +29,11 @@ interface AssetGenerator extends BaseGeneratorReturn {
 }
 
 /**
- * Load and prepare assets from the specified model.
+ * 从指定模型加载并准备资源。
  *
- * The method performs a two-step process:
- * 1. Filter out assets whose source files no longer exist. Missing files are
- *    removed from the database to keep the model in sync with the file system.
- * 2. Map each remaining asset to an object containing its destination path and
- *    a function for obtaining its data. Renderable assets are rendered to
- *    strings, while non-renderable ones are read as streams.
+ * 此方法执行两个步骤：
+ * 1. 过滤掉源文件已不存在的资源，删除数据库中缺失的文件以保持与文件系统同步。
+ * 2. 将剩余的每个资源映射为包含目标路径和获取数据函数的对象。可渲染的资源将被渲染为字符串，非可渲染资源则作为流读取。
  */
 const process = (name: string, ctx: Hexo) => {
   return Promise.filter(ctx.model(name).toArray(), (asset: Document<AssetSchema>) => exists(asset.source).tap(exist => {
@@ -52,7 +46,7 @@ const process = (name: string, ctx: Hexo) => {
     };
 
     if (asset.renderable && ctx.render.isRenderable(path)) {
-      // Replace extension name if the asset can be rendered to another format
+      // 如果资源可以渲染为其他格式，则替换其扩展名
       const filename = path.substring(0, path.length - extname(path).length);
 
       path = `${filename}.${ctx.render.getOutput(path)}`;
@@ -64,7 +58,7 @@ const process = (name: string, ctx: Hexo) => {
         ctx.log.error({err}, 'Asset render failed: %s', magenta(path));
       });
     } else {
-      // Non-renderable assets are served directly from disk as streams
+      // 无法渲染的资源将直接以流的形式从磁盘提供
       data.data = () => createReadStream(source);
     }
 
@@ -73,10 +67,9 @@ const process = (name: string, ctx: Hexo) => {
 };
 
 /**
- * Register the asset generator.
+ * 注册资源生成器。
  *
- * It processes both "Asset" and "PostAsset" models and flattens the results
- * into a single array consumed by Hexo's generation pipeline.
+ * 它会同时处理 "Asset" 和 "PostAsset" 模型，并将结果展平为一个数组供 Hexo 的生成流程使用。
  */
 function assetGenerator(this: Hexo): Promise<AssetGenerator[]> {
   return Promise.all([

@@ -1,9 +1,7 @@
 /**
- * Registers Hexo's built-in console commands.
+ * 注册 Hexo 的内置控制台命令。
  *
- * Each command (e.g. `hexo clean`, `hexo generate`) is defined in its own
- * module and plugged into the CLI here along with descriptions and options
- * that describe its usage.
+ * 每个命令（如 `hexo clean`、`hexo generate`）都在其模块中定义，并在此处与描述和选项一起接入 CLI。
  */
 import type Hexo from '../../hexo';
 

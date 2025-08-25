@@ -1,7 +1,7 @@
 import type { HighlightOptions } from '../../extend/syntax_highlight';
 import type Hexo from '../../hexo';
 
-// Lazy require highlight.js
+// 延迟加载 highlight.js
 let highlight: typeof import('hexo-util').highlight;
 
 module.exports = function highlightFilter(this: Hexo, code: string, options: HighlightOptions) {
@@ -34,7 +34,7 @@ module.exports = function highlightFilter(this: Hexo, code: string, options: Hig
   }
 
   if (Array.isArray(hljsCfg.exclude_languages) && hljsCfg.exclude_languages.includes(hljsOptions.lang)) {
-    // Only wrap with <pre><code class="lang"></code></pre>
+    // 仅包裹 <pre><code class="lang"></code></pre>
     hljsOptions.wrap = false;
     hljsOptions.gutter = false;
     hljsOptions.autoDetect = false;

@@ -15,7 +15,7 @@ function listTag(this: Hexo): void {
 
   const data = Tag.sort({name: 1}).map((tag: Document<TagSchema> & TagSchema) => [tag.name, String(tag.length), magenta(tag.path)]);
 
-  // Table header
+  // 表头
   const header = ['Name', 'Posts', 'Path'].map(str => underline(str));
 
   data.unshift(header);

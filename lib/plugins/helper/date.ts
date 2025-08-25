@@ -4,11 +4,9 @@ import moize from 'moize';
 import type { LocalsType } from '../../types';
 
 /**
- * Date and time helper functions used within templates.
+ * 模板中使用的日期与时间辅助函数。
  *
- * Provides wrappers around Moment.js for consistent locale and timezone
- * handling as well as formatting utilities such as `date`, `time` and
- * `moment`.
+ * 提供对 Moment.js 的封装，以便统一处理语言与时区，并提供 `date`、`time`、`moment` 等格式化工具。
  */
 
 const isDate = (value: moment.MomentInput | moment.Moment): boolean =>
@@ -73,20 +71,20 @@ function getLanguage(ctx: LocalsType) {
 }
 
 /**
- * Convert Hexo language code to Moment locale code.
- * examples:
+ * 将 Hexo 的语言代码转换为 Moment 的地区代码。
+ * 示例：
  *   default => en
  *   zh-CN => zh-cn
  *
- * Moment defined locales: https://github.com/moment/moment/tree/master/locale
+ * Moment 定义的语言列表： https://github.com/moment/moment/tree/master/locale
  */
 function _toMomentLocale(lang?: string) {
   if (lang === undefined) {
     return undefined;
   }
 
-  // moment.locale('') equals moment.locale('en')
-  // moment.locale(null) equals moment.locale('en')
+  // moment.locale('') 等同于 moment.locale('en')
+  // moment.locale(null) 等同于 moment.locale('en')
   if (!lang || lang === 'en' || lang === 'default') {
     return 'en';
   }

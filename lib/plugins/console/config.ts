@@ -7,9 +7,7 @@ import type Hexo from '../../hexo';
 /**
  * `hexo config`
  *
- * Reads or writes values in the main `_config.yml`/`_config.json` file. Without
- * arguments it prints the entire configuration; with a key it prints that
- * value, and with both key and value it updates the configuration file.
+ * 读取或写入主 `_config.yml`/`_config.json` 文件中的值。无参数时打印整个配置；提供键名时打印对应值；同时提供键值时更新配置文件。
  */
 
 interface ConfigArgs {

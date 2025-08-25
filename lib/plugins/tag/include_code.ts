@@ -8,9 +8,9 @@ const rFrom = /\s*from:(\d+)/i;
 const rTo = /\s*to:(\d+)/i;
 
 /**
-* Include code tag
+* 引入代码标签
 *
-* Syntax:
+* 语法：
 *   {% include_code [title] [lang:language] path/to/file %}
 */
 
@@ -18,7 +18,7 @@ export = (ctx: Hexo) => function includeCodeTag(args: string[]) {
   let codeDir = ctx.config.code_dir;
   let arg = args.join(' ');
 
-  // Add trailing slash to codeDir
+  // 给 codeDir 添加末尾斜杠
   if (!codeDir.endsWith('/')) codeDir += '/';
 
   let lang = '';
@@ -39,17 +39,17 @@ export = (ctx: Hexo) => function includeCodeTag(args: string[]) {
 
   const match = arg.match(rCaptionTitleFile);
 
-  // Exit if path is not defined
+  // 如果未定义路径则退出
   if (!match) return;
 
   const path = match[2];
 
-  // If the language is not defined, use file extension instead
+  // 如果未定义语言，则使用文件扩展名
   lang = lang || extname(path).substring(1);
 
   const source = join(codeDir, path).replace(/\\/g, '/');
 
-  // Prevent path traversal: https://github.com/hexojs/hexo/issues/5250
+  // 防止路径遍历：https://github.com/hexojs/hexo/issues/5250
   const Page = ctx.model('Page');
   const doc = Page.findOne({ source });
   if (!doc) return;
@@ -58,7 +58,7 @@ export = (ctx: Hexo) => function includeCodeTag(args: string[]) {
   const lines = code.split('\n');
   code = lines.slice(from, to).join('\n').trim();
 
-  // If the title is not defined, use file name instead
+  // 如果未定义标题，则使用文件名
   const title = match[1] || basename(path);
   const caption = `<span>${title}</span><a href="${url_for.call(ctx, doc.path)}">view raw</a>`;
 

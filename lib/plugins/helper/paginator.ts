@@ -75,35 +75,35 @@ const paginationPartShow = (tags, options, ctx: LocalsType) => {
 
   const pageTag = createPageTag(options, ctx);
 
-  // Display pages on the left edge
+  // 显示左侧边缘的页面
   for (let i = 1; i <= leftEnd; i++) {
     tags.push(pageTag(i));
   }
 
-  // Display spaces between edges and middle pages
+  // 在边缘和中间页面之间显示间隔
   if (space && leftMid - leftEnd > 1) {
     tags.push(spaceHtml);
   }
 
-  // Display left middle pages
+  // 显示左侧中间的页面
   for (let i = leftMid; i < current; i++) {
     tags.push(pageTag(i));
   }
 
-  // Display the current page
+  // 显示当前页
   tags.push(pageTag(current));
 
-  // Display right middle pages
+  // 显示右侧中间的页面
   for (let i = current + 1; i <= rightMid; i++) {
     tags.push(pageTag(i));
   }
 
-  // Display spaces between edges and middle pages
+  // 在边缘和中间页面之间显示间隔
   if (space && rightEnd - rightMid > 1) {
     tags.push(spaceHtml);
   }
 
-  // Display pages on the right edge
+  // 显示右侧边缘的页面
   for (let i = rightEnd; i <= total; i++) {
     tags.push(pageTag(i));
   }
@@ -148,7 +148,7 @@ function paginatorHelper(this: LocalsType, options: Options = {}) {
 
   const tags = [];
 
-  // Display the link to the previous page
+  // 显示上一页的链接
   if (prevNext && current > 1) {
     tags.push(htmlTag('a', { class: prevClass, rel: 'prev', href: link(current - 1)}, prevText, escape));
   } else if (forcePrevNext) {
@@ -161,7 +161,7 @@ function paginatorHelper(this: LocalsType, options: Options = {}) {
     paginationPartShow(tags, options, this);
   }
 
-  // Display the link to the next page
+  // 显示下一页的链接
   if (prevNext && current < total) {
     tags.push(htmlTag('a', { class: nextClass, rel: 'next', href: link(current + 1) }, nextText, escape));
   } else if (forcePrevNext) {

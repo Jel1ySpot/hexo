@@ -1,11 +1,11 @@
 import type Hexo from '../../hexo';
 
 /**
-* Pullquote tag
+* pullquote 标签
 *
-* Syntax:
+* 语法：
 *   {% pullquote [class] %}
-*   Quote string
+*   引用内容
 *   {% endpullquote %}
 */
 export = (ctx: Hexo) => function pullquoteTag(args: string[], content: string) {

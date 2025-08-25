@@ -2,8 +2,7 @@ import archy from 'archy';
 import type Hexo from '../../../hexo';
 
 /**
- * Prints all generated routes as a tree, showing the structure of the public
- * URLs that will be generated.
+ * 以树状打印所有生成的路由，展示将要生成的公共 URL 结构。
  */
 
 function listRoute(this: Hexo): void {
